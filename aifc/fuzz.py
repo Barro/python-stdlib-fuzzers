@@ -17,20 +17,12 @@ while afl.loop():
             if markers:
                 for marker in markers:
                     fd.getmark(marker)
-            # TODO report
-            # if nframes > 0:
-            #     print(nframes)
-            #     fd.readframes(nframes)
+            if nframes > 0:
+                fd.readframes(nframes)
             fd.tell()
             fd.rewind()
             fd.setpos(0)
     except EOFError:
-        pass
-    # TODO report
-    except OverflowError:
-        pass
-    # TODO report
-    except TypeError:
         pass
     except aifc.Error:
         pass
