@@ -16,5 +16,10 @@ BASE=$(basename "$FILENAME")
 mkdir -p "$TARGET"/crashes
 OUTNAME=$TARGET/crashes/$BASE
 
+if [[ -f "$OUTNAME" ]]; then
+    echo >&2 "Already processed $FILENAME"
+    exit 0
+fi
+
 exec py-afl-tmin -i "$FILENAME" -o "$OUTNAME" -- \
      "$PYTHON_CMD" "$TARGET_SCRIPT" @@
