@@ -19,5 +19,5 @@ echo >&2 "Running $AFL_ID with $PYTHON_CMD"
 
 while read -r filename; do
     echo >&2 "Running for $filename"
-    "$PYTHON_CMD" "$TARGET_SCRIPT" "$filename"
+    (ulimit -v 200000; "$PYTHON_CMD" "$TARGET_SCRIPT" "$filename")
 done <<< "$(find "$INDIR" -type f)"

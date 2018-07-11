@@ -23,5 +23,5 @@ AFL_ID=$TARGET-$INSTANCE
 
 echo >&2 "Running $AFL_ID with $PYTHON_CMD"
 
-exec py-afl-fuzz -i "$INDIR" -o "$OUTDIR" "$INSTANCE_TYPE" "$AFL_ID" -- \
+exec py-afl-fuzz -m 200 -i "$INDIR" -o "$OUTDIR" "$INSTANCE_TYPE" "$AFL_ID" -- \
      "$PYTHON_CMD" "$TARGET_SCRIPT" @@
