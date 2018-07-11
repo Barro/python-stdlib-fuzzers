@@ -18,3 +18,5 @@ while afl.loop():
             fd.setpos(0)
     except wave.Error:
         pass
+    except EOFError:
+        pass
