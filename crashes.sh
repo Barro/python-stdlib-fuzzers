@@ -18,7 +18,9 @@ while read -r filename; do
     (ulimit -v 200000; "$PYTHON_CMD" "$TARGET_SCRIPT" "$filename") && continue
     (ulimit -v 200000; "$PYTHON_CMD" "$TARGET_SCRIPT" "$filename" 1>/dev/null 2>"$OUTDIR"/current-crash) || :
     echo >&2 "$PYTHON_CMD" "$TARGET_SCRIPT" "$filename"
-    read -r stack_trace_sum _ <<< "$(sha256sum -b "$OUTDIR"/current-crash)"
+    ./normalize-backtrace.py < "$OUTDIR"/current-crash > "$OUTDIR"/current-crash.normalized
+    read -r stack_trace_sum _ <<< "$(sha256sum -b "$OUTDIR"/current-crash.normalized)"
     mkdir -p "$TARGET"/crashes-raw
     cp "$filename" "$TARGET"/crashes-raw/"$stack_trace_sum".in
+    cp "$OUTDIR"/current-crash.normalized "$TARGET"/crashes-raw/"$stack_trace_sum".backtrace.txt
 done <<< "$(find "$OUTDIR" -type f | grep crashes/id | sort)"
