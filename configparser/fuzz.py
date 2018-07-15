@@ -12,6 +12,8 @@ def fuzz():
         for name, proxy in parser_basic.items():
             for option, value in parser_basic.items(name):
                 pass
+            repr(proxy)
+        repr(parser_basic)
     except configparser.Error:
         pass
 
@@ -22,6 +24,8 @@ def fuzz():
         for name, proxy in parser_extended.items():
             for option, value in parser_extended.items(name):
                 pass
+            repr(proxy)
+        repr(parser_extended)
     except configparser.Error:
         pass
 
