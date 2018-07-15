@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 11, in fuzz
+    info.is_dir()
+  File "zipfile.py", line 507, in is_dir
+    return self.filename[-1] == '/'
+IndexError: string index out of range

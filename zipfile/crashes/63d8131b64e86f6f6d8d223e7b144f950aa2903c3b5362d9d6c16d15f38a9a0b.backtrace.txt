@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 25, in fuzz
+    zp.testzip()
+  File "zipfile.py", line 1363, in testzip
+    while f.read(chunk_size):     # Check CRC-32
+  File "zipfile.py", line 876, in read
+    data = self._read1(n)
+  File "zipfile.py", line 946, in _read1
+    data = self._read2(n)
+  File "zipfile.py", line 979, in _read2
+    raise EOFError
+EOFError

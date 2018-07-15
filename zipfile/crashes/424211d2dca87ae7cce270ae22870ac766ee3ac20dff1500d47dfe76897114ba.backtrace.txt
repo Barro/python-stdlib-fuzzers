@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 15, in fuzz
+    zp.read(name)
+  File "zipfile.py", line 1407, in read
+    return fp.read()
+  File "zipfile.py", line 862, in read
+    buf += self._read1(self.MAX_N)
+  File "zipfile.py", line 959, in _read1
+    data = self._decompressor.decompress(data)
+OSError: Invalid data stream

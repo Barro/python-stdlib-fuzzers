@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 9, in fuzz
+    with zipfile.ZipFile(file=fp, mode="r",) as zp:
+  File "zipfile.py", line 1200, in __init__
+    self._RealGetContents()
+  File "zipfile.py", line 1323, in _RealGetContents
+    x._decodeExtra()
+  File "zipfile.py", line 466, in _decodeExtra
+    self.header_offset = counts[idx]
+IndexError: tuple index out of range

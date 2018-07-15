@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 15, in fuzz
+    zp.read(name)
+  File "zipfile.py", line 1406, in read
+    with self.open(name, "r", pwd) as fp:
+  File "zipfile.py", line 1482, in open
+    fname_str = fname.decode("utf-8")
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 21: invalid continuation byte

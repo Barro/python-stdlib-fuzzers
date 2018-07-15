@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 15, in fuzz
+    zp.read(name)
+  File "zipfile.py", line 1406, in read
+    with self.open(name, "r", pwd) as fp:
+  File "zipfile.py", line 1461, in open
+    fheader = zef_file.read(sizeFileHeader)
+  File "zipfile.py", line 718, in read
+    self._file.seek(self._pos)
+OSError: [Errno 22] Invalid argument

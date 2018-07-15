@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 37, in <module>
+    fuzz()
+  File "fuzz.py", line 25, in fuzz
+    zp.testzip()
+  File "zipfile.py", line 1362, in testzip
+    with self.open(zinfo.filename, "r") as f:
+  File "zipfile.py", line 1499, in open
+    "required for extraction" % name)
+RuntimeError: File 'a/a' is encrypted, password required for extraction
