@@ -12,8 +12,10 @@ def fuzz():
                 for member in members:
                     member.tobuf()
                     tp.extractfile(member)
+                    repr(member)
                 for name in tp.getnames():
                     pass
+                repr(tp)
         except tarfile.TarError:
             pass
 
