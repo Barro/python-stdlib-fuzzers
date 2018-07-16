@@ -11,6 +11,13 @@ if ! [[ -f "$TARGET_SCRIPT" ]]; then
     exit 1
 fi
 INDIR=$TARGET/in
+
+# corpus/ directory within a target provides seed corpus with much
+# larger coverage than what the manually created in/ directory does.
+if [[ -d "$TARGET"/corpus ]]; then
+    INDIR=$TARGET/corpus
+fi
+
 OUTDIR=/dev/shm/python-stdlib-$TARGET
 
 INSTANCE=0
