@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 29, in <module>
+    fuzz()
+  File "fuzz.py", line 11, in fuzz
+    for key, value in mail.items():
+  File "mailbox.py", line 132, in items
+    return list(self.iteritems())
+  File "mailbox.py", line 125, in iteritems
+    value = self[key]
+  File "mailbox.py", line 73, in __getitem__
+    return self.get_message(key)
+  File "mailbox.py", line 781, in get_message
+    msg.set_from(from_line[5:].decode('ascii'))
+UnicodeDecodeError
