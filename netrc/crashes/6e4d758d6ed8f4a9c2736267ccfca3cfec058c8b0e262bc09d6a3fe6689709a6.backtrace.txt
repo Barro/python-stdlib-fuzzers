@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 11, in <module>
+    nrc = netrc.netrc(sys.argv[1])
+  File "netrc.py", line 30, in __init__
+    self._parse(file, fp, default_netrc)
+  File "netrc.py", line 39, in _parse
+    toplevel = tt = lexer.get_token()
+  File "shlex.py", line 105, in get_token
+    raw = self.read_token()
+  File "shlex.py", line 136, in read_token
+    nextchar = self.instream.read(1)
+  File "codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError
