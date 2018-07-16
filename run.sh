@@ -42,5 +42,15 @@ AFL_ID=$TARGET-$INSTANCE
 
 echo >&2 "Running $AFL_ID with $PYTHON_CMD at $OUTDIR/$AFL_ID"
 
-exec py-afl-fuzz -m 200 -i "$INDIR" -o "$OUTDIR" "$INSTANCE_TYPE" "$AFL_ID" -- \
-     "$PYTHON_CMD" "$TARGET_SCRIPT" @@
+PARAMS=(
+    -m 200
+    -i "$INDIR"
+    -o "$OUTDIR"
+    "$INSTANCE_TYPE" "$AFL_ID"
+)
+
+if [[ -f "$TARGET"/"$TARGET".dict ]]; then
+    PARAMS+=(-x "$TARGET"/"$TARGET".dict)
+fi
+
+exec py-afl-fuzz "${PARAMS[@]}" -- "$PYTHON_CMD" "$TARGET_SCRIPT" @@
