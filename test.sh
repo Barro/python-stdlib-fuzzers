@@ -3,7 +3,6 @@
 set -euo pipefail
 
 TARGET=$1
-INSTANCE=${2:-1}
 PYTHON_CMD=${PYTHON_CMD:-python3}
 
 TARGET_SCRIPT=$TARGET/fuzz.py
@@ -13,9 +12,7 @@ if ! [[ -f "$TARGET_SCRIPT" ]]; then
 fi
 INDIR=$TARGET/in
 
-AFL_ID=$TARGET-$INSTANCE
-
-echo >&2 "Running $AFL_ID with $PYTHON_CMD"
+echo >&2 "Running $TARGET with $PYTHON_CMD"
 
 while read -r filename; do
     echo >&2 "Running for $filename"
