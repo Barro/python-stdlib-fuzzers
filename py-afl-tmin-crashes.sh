@@ -32,6 +32,11 @@ while read -r filename; do
         continue
     fi
 
+    # Handle zero-sized files:
+    if [[ ! -s "$filename" ]]; then
+        continue
+    fi
+
     py-afl-tmin -m 200 -i "$filename" -o "$workdir"/tmin -- \
         "$PYTHON_CMD" "$TARGET_SCRIPT" @@
     (ulimit -v 200000; "$PYTHON_CMD" "$TARGET_SCRIPT" "$workdir"/tmin 1>/dev/null 2>"$workdir"/backtrace) || :

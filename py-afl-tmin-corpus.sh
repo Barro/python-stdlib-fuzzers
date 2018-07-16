@@ -29,6 +29,11 @@ while read -r filename; do
     echo >&2 "Processing $current_file/$files"
     current_file=$(( current_file + 1 ))
 
+    # Handle zero-sized files:
+    if [[ ! -s "$filename" ]]; then
+        continue
+    fi
+
     py-afl-tmin -m 200 -i "$filename" -o "$workdir"/tmin -- \
         "$PYTHON_CMD" "$TARGET_SCRIPT" @@
     if cmp --quiet "$filename" "$workdir"/tmin; then
