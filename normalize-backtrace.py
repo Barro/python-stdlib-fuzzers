@@ -3,7 +3,15 @@
 import os.path
 import sys
 
-for line in sys.stdin.read().splitlines():
+lines = sys.stdin.read().splitlines()
+
+print(lines[0])
+next_to_backtrace_line = None
+
+for line in lines[1:]:
+    if not line.startswith('  '):
+        next_to_backtrace_line = line
+        break
     if not line.startswith('  File "'):
         print(line)
         continue
@@ -12,3 +20,7 @@ for line in sys.stdin.read().splitlines():
     basename = os.path.basename(filename)
     parts[1:-1] = [basename]
     print('"'.join(parts))
+
+if next_to_backtrace_line and ":" in next_to_backtrace_line:
+    exception_type, _ = next_to_backtrace_line.split(":", 1)
+    print(exception_type)
