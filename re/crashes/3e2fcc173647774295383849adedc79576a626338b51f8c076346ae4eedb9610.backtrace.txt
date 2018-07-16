@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 23, in <module>
+    fuzz()
+  File "fuzz.py", line 17, in fuzz
+    re.compile(data_str)
+  File "re.py", line 234, in compile
+    return _compile(pattern, flags)
+  File "re.py", line 286, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "sre_compile.py", line 764, in compile
+    p = sre_parse.parse(p, flags)
+  File "sre_parse.py", line 930, in parse
+    p = _parse_sub(source, pattern, flags & SRE_FLAG_VERBOSE, 0)
+  File "sre_parse.py", line 426, in _parse_sub
+    not nested and not items))
+  File "sre_parse.py", line 507, in _parse
+    code = _escape(source, this, state)
+  File "sre_parse.py", line 371, in _escape
+    chr(c) # raise ValueError for invalid code
+OverflowError
