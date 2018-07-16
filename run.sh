@@ -3,7 +3,6 @@
 set -euo pipefail
 
 TARGET=$1
-INSTANCE=${2:-1}
 PYTHON_CMD=${PYTHON_CMD:-python3}
 
 TARGET_SCRIPT=$TARGET/fuzz.py
@@ -14,6 +13,26 @@ fi
 INDIR=$TARGET/in
 OUTDIR=/dev/shm/python-stdlib-$TARGET
 
+INSTANCE=0
+# afl-fuzz locks its working directory, use that information to find
+# the next available ID
+for instance_id in $(seq 1 "$(nproc)"); do
+    instance_dir=$OUTDIR/$TARGET-$instance_id
+    if [[ ! -d "$instance_dir" ]]; then
+        INSTANCE=$instance_id
+        break
+    fi
+    flock -n "$instance_dir" -c echo > /dev/null || continue
+    INSTANCE=$instance_id
+    break
+done
+
+if [[ "$INSTANCE" == 0 ]]; then
+    echo >&2 "Already have $(nproc) afl-fuzz instances running for this target!"
+    echo >&2 "Refusing to start any more of them!"
+    exit 1
+fi
+
 INSTANCE_TYPE=-M
 if [[ "$INSTANCE" != 1 ]]; then
     INSTANCE_TYPE=-S
@@ -21,7 +40,7 @@ fi
 
 AFL_ID=$TARGET-$INSTANCE
 
-echo >&2 "Running $AFL_ID with $PYTHON_CMD"
+echo >&2 "Running $AFL_ID with $PYTHON_CMD at $OUTDIR/$AFL_ID"
 
 exec py-afl-fuzz -m 200 -i "$INDIR" -o "$OUTDIR" "$INSTANCE_TYPE" "$AFL_ID" -- \
      "$PYTHON_CMD" "$TARGET_SCRIPT" @@
