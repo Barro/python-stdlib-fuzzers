@@ -42,6 +42,11 @@ while read -r filename; do
     # problem. Symbolically link to indicate the duplicates.
     if [[ -e "$TARGET/crashes/$stack_trace_sum.in" ]]; then
         ln -s "$stack_trace_sum.in" "$OUTNAME"
+        size_old=$(stat --format=%s "$OUTNAME")
+        size_new=$(stat --format=%s "$workdir"/tmin)
+        if [[ "$size_new" -lt "$size_old" ]]; then
+            cp "$workdir"/tmin "$OUTNAME"
+        fi
         continue
     fi
     cp "$workdir"/tmin "$TARGET/crashes/$stack_trace_sum.in"
