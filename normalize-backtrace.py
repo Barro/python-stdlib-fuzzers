@@ -21,6 +21,9 @@ for line in lines[1:]:
     parts[1:-1] = [basename]
     print('"'.join(parts))
 
-if next_to_backtrace_line and ":" in next_to_backtrace_line:
-    exception_type, _ = next_to_backtrace_line.split(":", 1)
-    print(exception_type)
+if next_to_backtrace_line:
+    if ":" in next_to_backtrace_line:
+        exception_type, _ = next_to_backtrace_line.split(":", 1)
+        print(exception_type)
+    else:
+        print(next_to_backtrace_line)
