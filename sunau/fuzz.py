@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import afl
 import os
 import sunau
@@ -15,16 +17,11 @@ try:
         fd.getcomptype()
         fd.getcompname()
         fd.getparams()
-        if nframes > 0:
-            fd.readframes(nframes)
+        for frame in range(nframes):
+            fd.readframes(1)
         fd.tell()
         fd.setpos(0)
         fd.rewind()
-# TODO file.read(nframes * self._framesize) causes large memory
-# allocations when nframes is large. This can cause quite possible out
-# of memory errors with really small inputs.
-except MemoryError:
-    pass
 except EOFError:
     pass
 except sunau.Error:
