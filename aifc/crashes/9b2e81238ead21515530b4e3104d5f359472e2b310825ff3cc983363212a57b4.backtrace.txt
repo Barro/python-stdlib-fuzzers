@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 21, in <module>
+    fd.readframes(nframes)
+  File "aifc.py", line 438, in readframes
+    data = self._ssnd_chunk.read(nframes * self._framesize)
+  File "chunk.py", line 136, in read
+    data = self.file.read(size)
+MemoryError

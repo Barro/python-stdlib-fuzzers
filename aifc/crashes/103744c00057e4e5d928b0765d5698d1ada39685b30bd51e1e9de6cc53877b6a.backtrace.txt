@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 8, in <module>
+    with aifc.open(sys.argv[1]) as fd:
+  File "aifc.py", line 917, in open
+    return Aifc_read(f)
+  File "aifc.py", line 352, in __init__
+    self.initfp(file_object)
+  File "aifc.py", line 334, in initfp
+    self._read_comm_chunk(chunk)
+  File "aifc.py", line 469, in _read_comm_chunk
+    self._framerate = int(_read_float(chunk))
+OverflowError
