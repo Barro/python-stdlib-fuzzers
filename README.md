@@ -63,3 +63,17 @@ $ ./crashes.sh target-name
 # <target-name>/crashes/ directory.
 $ ./py-afl-tmin-crashes.sh target-name
 ```
+
+### Crashes
+
+The scripts that process these crashes do some rudimentary stack
+backtrace normalization and crash deduplication in addition to what
+`py-afl-fuzz` does by default. The crash files are initially named by
+the checksum of the stack backtrace but can be then symbolically
+linked to the issue ID number that bug reports from
+[Python bug tracker](https://bugs.python.org/) generate.
+
+If a fuzz target is resulting in needless exceptions and the failures
+that can result from invalid inputs are allowed, then the fuzz target
+should be modified to just ignore such exceptions. Of course invalid
+function calls or call sequences in fuzz targets should be fixed.
