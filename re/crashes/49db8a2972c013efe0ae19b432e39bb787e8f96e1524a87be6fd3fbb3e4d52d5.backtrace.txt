@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 23, in <module>
+    fuzz()
+  File "fuzz.py", line 17, in fuzz
+    re.compile(data_str)
+  File "re.py", line 234, in compile
+    return _compile(pattern, flags)
+  File "re.py", line 286, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "sre_compile.py", line 764, in compile
+    p = sre_parse.parse(p, flags)
+  File "sre_parse.py", line 940, in parse
+    p.pattern.flags = fix_flags(str, p.pattern.flags)
+  File "sre_parse.py", line 911, in fix_flags
+    raise ValueError("ASCII and UNICODE flags are incompatible")
+ValueError
