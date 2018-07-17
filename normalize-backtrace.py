@@ -5,6 +5,9 @@ import sys
 
 lines = sys.stdin.read().splitlines()
 
+if not lines:
+    sys.exit(0)
+
 print(lines[0])
 next_to_backtrace_line = None
 
