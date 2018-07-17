@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 7, in <module>
+    with wave.open(sys.argv[1]) as fd:
+  File "wave.py", line 510, in open
+    return Wave_read(f)
+  File "wave.py", line 164, in __init__
+    self.initfp(f)
+  File "wave.py", line 153, in initfp
+    chunk.skip()
+  File "chunk.py", line 160, in skip
+    self.file.seek(n, 1)
+  File "chunk.py", line 113, in seek
+    raise RuntimeError
+RuntimeError
