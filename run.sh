@@ -60,4 +60,5 @@ if [[ -f "$TARGET"/"$TARGET".dict ]]; then
     PARAMS+=(-x "$TARGET"/"$TARGET".dict)
 fi
 
+export PYTHONHASHSEED=1234
 exec py-afl-fuzz "${PARAMS[@]}" -- "$PYTHON_CMD" "$TARGET_SCRIPT" @@
