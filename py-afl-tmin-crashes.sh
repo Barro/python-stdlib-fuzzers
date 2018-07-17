@@ -55,7 +55,7 @@ while read -r filename; do
         continue
     fi
     cp "$workdir"/tmin "$TARGET/crashes/$stack_trace_sum.in"
-    cp "$workdir"/backtrace.normalized "$TARGET/crashes/$stack_trace_sum.backtrace.txt"
+    cp "$workdir"/backtrace.normalized "$TARGET/crashes/backtrace.$stack_trace_sum.txt"
     if [[ ! -e "$OUTNAME" ]]; then
         ln -s "$stack_trace_sum.in" "$OUTNAME"
     fi

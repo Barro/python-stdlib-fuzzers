@@ -28,5 +28,5 @@ while read -r filename; do
     read -r stack_trace_sum _ <<< "$(sha256sum -b "$OUTDIR"/current-crash.normalized)"
     mkdir -p "$TARGET"/crashes-raw
     cp "$filename" "$TARGET"/crashes-raw/"$stack_trace_sum".in
-    cp "$OUTDIR"/current-crash.normalized "$TARGET"/crashes-raw/"$stack_trace_sum".backtrace.txt
+    cp "$OUTDIR"/current-crash.normalized "$TARGET"/crashes-raw/backtrace."$stack_trace_sum".txt
 done <<< "$crashes"
