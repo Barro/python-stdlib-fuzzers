@@ -12,6 +12,12 @@ if ! [[ -f "$TARGET_SCRIPT" ]]; then
 fi
 OUTDIR=/dev/shm/python-stdlib-$TARGET
 
+crashes=$(find "$OUTDIR" -type f | grep crashes/id | sort || :)
+if [[ -z "$crashes" ]]; then
+    echo >&2 "No crashes found for $TARGET"
+    exit 0
+fi
+
 echo >&2 "Running $TARGET with $PYTHON_CMD"
 
 while read -r filename; do
@@ -23,4 +29,4 @@ while read -r filename; do
     mkdir -p "$TARGET"/crashes-raw
     cp "$filename" "$TARGET"/crashes-raw/"$stack_trace_sum".in
     cp "$OUTDIR"/current-crash.normalized "$TARGET"/crashes-raw/"$stack_trace_sum".backtrace.txt
-done <<< "$(find "$OUTDIR" -type f | grep crashes/id | sort)"
+done <<< "$crashes"
