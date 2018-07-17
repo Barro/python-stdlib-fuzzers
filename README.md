@@ -62,6 +62,12 @@ $ ./crashes.sh target-name
 # Further deduplicate and minimize the found crashes to
 # <target-name>/crashes/ directory.
 $ ./py-afl-tmin-crashes.sh target-name
+# Create a seed corpus from the previous corpus and new non-crashing
+# inputs.
+$ ./corpus.sh target-name
+# Minimize the files inside the corpus. This is very expensive
+# operation with no execution avoidance.
+$ ./py-afl-tmin-corpus.sh target-name
 ```
 
 ### Crashes
