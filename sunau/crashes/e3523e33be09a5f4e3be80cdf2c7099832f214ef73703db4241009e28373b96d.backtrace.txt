@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 21, in <module>
+    fd.readframes(1)
+  File "sunau.py", line 275, in readframes
+    data = self._file.read(nframes * self._framesize)
+MemoryError
