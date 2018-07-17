@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "uu.py", line 148, in decode
+    data = binascii.a2b_uu(s)
+binascii.Error
