@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 36, in <module>
+    fuzz()
+  File "fuzz.py", line 25, in fuzz
+    assert data_default == data_python
+AssertionError

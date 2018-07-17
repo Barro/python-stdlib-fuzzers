@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 36, in <module>
+    fuzz()
+  File "fuzz.py", line 28, in fuzz
+    assert data == quopri.decodestring(out_tabs_python)
+AssertionError
