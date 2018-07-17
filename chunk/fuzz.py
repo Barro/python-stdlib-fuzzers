@@ -9,10 +9,10 @@ while afl.loop():
             cd.getname()
             cd.getsize()
             cd.tell()
-            while cd.read(4096):
+            while cd.read(64):
                 pass
             cd.skip()
-            while cd.read(4096):
+            while cd.read(64):
                 pass
             cd.close()
         except EOFError:
