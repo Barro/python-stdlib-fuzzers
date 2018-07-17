@@ -70,6 +70,13 @@ $ ./corpus.sh target-name
 $ ./py-afl-tmin-corpus.sh target-name
 ```
 
+Then if any bugs are found and there is a supposed fix for them, one
+can run some regression tests to catch the remaining issues:
+
+```bash
+$ ./regression.sh target-name
+```
+
 ### Crashes
 
 The scripts that process these crashes do some rudimentary stack
