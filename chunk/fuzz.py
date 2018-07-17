@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+
 import afl
 import chunk
 import sys
 
-while afl.loop():
+
+def fuzz():
     with open(sys.argv[1], "rb") as fd:
         try:
             cd = chunk.Chunk(fd)
@@ -17,3 +20,7 @@ while afl.loop():
             cd.close()
         except EOFError:
             pass
+
+
+while afl.loop():
+    fuzz()
