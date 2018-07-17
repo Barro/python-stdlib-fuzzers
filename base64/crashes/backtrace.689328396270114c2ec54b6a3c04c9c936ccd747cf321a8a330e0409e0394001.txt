@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 62, in <module>
+    fuzz(sys.argv[1])
+  File "fuzz.py", line 24, in fuzz
+    base64.b32decode(data)
+  File "base64.py", line 235, in b32decode
+    acc <<= 5 * padchars
+UnboundLocalError
