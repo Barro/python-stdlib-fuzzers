@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 42, in <module>
+    fuzz(workfile_in, workfile_out)
+  File "fuzz.py", line 29, in fuzz
+    binhex.hexbin(infile, workfile_out)
+  File "binhex.py", line 456, in hexbin
+    ifp = HexBin(inp)
+  File "binhex.py", line 371, in __init__
+    self._readheader()
+  File "binhex.py", line 391, in _readheader
+    rest = self._read(1 + 4 + 4 + 2 + 4 + 4)
+  File "binhex.py", line 374, in _read
+    data = self.ifp.read(len)
+  File "binhex.py", line 307, in read
+    self._fill(wtd - len(self.post_buffer))
+  File "binhex.py", line 344, in _fill
+    binascii.rledecode_hqx(self.pre_buffer[:mark])
+binascii.Incomplete

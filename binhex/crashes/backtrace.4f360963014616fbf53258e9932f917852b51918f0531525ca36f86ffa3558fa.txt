@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 42, in <module>
+    fuzz(workfile_in, workfile_out)
+  File "fuzz.py", line 20, in fuzz
+    binhex.hexbin(workfile_in, "/dev/null")
+  File "binhex.py", line 456, in hexbin
+    ifp = HexBin(inp)
+  File "binhex.py", line 371, in __init__
+    self._readheader()
+  File "binhex.py", line 389, in _readheader
+    len = self._read(1)
+  File "binhex.py", line 374, in _read
+    data = self.ifp.read(len)
+  File "binhex.py", line 307, in read
+    self._fill(wtd - len(self.post_buffer))
+  File "binhex.py", line 313, in _fill
+    self.pre_buffer = self.pre_buffer + self.ifp.read(wtd + 4)
+  File "binhex.py", line 279, in read
+    decdatacur, self.eof = binascii.a2b_hqx(data)
+binascii.Error
