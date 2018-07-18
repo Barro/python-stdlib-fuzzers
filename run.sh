@@ -61,4 +61,5 @@ if [[ -f "$TARGET"/"$TARGET".dict ]]; then
 fi
 
 export PYTHONHASHSEED=1234
+export AFL_HANG_TMOUT=10000
 exec py-afl-fuzz "${PARAMS[@]}" -- "$PYTHON_CMD" "$TARGET_SCRIPT" @@
