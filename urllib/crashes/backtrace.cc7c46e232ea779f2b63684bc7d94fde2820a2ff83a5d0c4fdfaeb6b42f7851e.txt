@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "fuzz.py", line 64, in <module>
+    fuzz()
+  File "fuzz.py", line 57, in fuzz
+    assert parsed == parsed_again, (parsed, parsed_again)
+AssertionError
